@@ -428,9 +428,6 @@ async def get_today_tolk_link(
             parsed = parse_tolk_from_schedule_json(schedule_data, today, par_num)
             if parsed:
                 prepod_id, group_id = parsed
-            # Если API вернул расписание, но на эту пару нет занятия (parsed is None) — не подставляем дефолтного препода
-            elif schedule_data:
-                return None
         if prepod_id is None or group_id is None:
             html = await fetch_schedule_html(today, group)
             if html:
